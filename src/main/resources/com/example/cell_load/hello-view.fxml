@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="335.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cell_load.CellLoadController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="64.0" prefWidth="451.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="start" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startReding" prefHeight="26.0" prefWidth="109.0" text="Start" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="stop" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#stop" prefHeight="26.0" prefWidth="109.0" text="Stop" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="109.0" text="Exit" textFill="#f00b0b" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" prefHeight="157.0" prefWidth="507.0" style="-fx-border-color: black; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="36.0" prefWidth="74.0" text="Reading1 : ">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="3.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+
+            <Label fx:id="liable1" alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="59.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="0.0" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets top="10.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="3.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label prefHeight="36.0" prefWidth="66.0" text="Reding2 :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="3.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="liable2" alignment="CENTER" prefHeight="36.0" prefWidth="59.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="0.0">
+               <HBox.margin>
+                  <Insets right="3.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label prefHeight="36.0" prefWidth="71.0" text="Reading3 :">
+               <padding>
+                  <Insets right="3.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="liable3" alignment="CENTER" prefHeight="36.0" prefWidth="59.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="0.0">
+               <HBox.margin>
+                  <Insets right="3.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label prefHeight="36.0" prefWidth="77.0" text="Reading 4 :">
+               <padding>
+                  <Insets right="3.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="liable4" alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="59.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="0.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets top="20.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </HBox>
+   </center>
+   <top>
+      <HBox prefHeight="27.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton fx:id="menu" mnemonicParsing="false" text="Save to file">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveToTxt" text="txt" />
+              </items>
+            </MenuButton>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

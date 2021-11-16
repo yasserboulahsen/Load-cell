@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Cell Load">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cell_Load</output-path>
+    <root id="root">
+      <element id="archive" name="Cell_Load.jar">
+        <element id="module-output" name="Cell Load" />
+      </element>
+    </root>
+  </artifact>
+</component>
