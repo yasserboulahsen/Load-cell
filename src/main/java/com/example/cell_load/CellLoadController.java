@@ -5,23 +5,33 @@ import Esp.EspData;
 import Esp.EspSerialPort;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class CellLoadController {
+    @FXML
+    private MenuItem refresh;
+    @FXML
+    private MenuButton com;
+    @FXML
+    private MenuItem txt;
     @FXML
     private Button stop;
     @FXML
@@ -36,16 +46,41 @@ public class CellLoadController {
     private Label liable2;
     @FXML
     private Label liable1;
+    private String comName;
+    private  SerialPort[] es = SerialPort.getCommPorts();
 
 
 
     private CellLoadData cellLoadData;
 
     public void initialize(){
+
         menu.setDisable(true);
         stop.setDisable(true);
 
-    }
+
+        for (SerialPort e:es
+             ) {
+
+            com.getItems().add(new MenuItem(e.getDescriptivePortName()));
+        }
+
+
+        com.getItems().forEach(e->{
+
+            e.setOnAction(event -> {
+                comName= e.getText();
+                System.out.println(comName);
+                com.setText(e.getText());
+            });
+        });
+
+
+
+        }
+
+
+
 
 
     public void startReding(ActionEvent actionEvent) throws IOException, InterruptedException {
@@ -53,7 +88,7 @@ public class CellLoadController {
 //        EspData.comPortFinalData(EspData.comPort());
         stop.setDisable(false);
     try {
-        cellLoadData = new CellLoadData(liable1, liable2, liable3, liable4);
+        cellLoadData = new CellLoadData(liable1, liable2, liable3, liable4,comName);
         cellLoadData.cellData(500);
     }catch (Exception e){
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -89,7 +124,7 @@ public class CellLoadController {
         File file = fileChooser.showOpenDialog(null);
         if(file!=null){
 
-                saveTextToFile(cellLoadData.gatData(),file);
+                saveTextToFile(cellLoadData.getData(),file);
 
 
         }
@@ -99,10 +134,14 @@ public class CellLoadController {
         try {
             PrintWriter writer;
             writer = new PrintWriter(file);
-            writer.println(content);
+//            writer.println("Reading 1 \t Reading 2 \t Reading 3 \t Reading 4");
+            content.forEach(writer::println);
+
             writer.close();
         } catch (IOException ex) {
             System.out.println("enable to save file");
         }
     }
+
+
 }

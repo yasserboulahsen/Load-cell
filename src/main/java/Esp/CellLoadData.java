@@ -21,6 +21,7 @@ public class CellLoadData extends Label{
     private final Label label2;
     private final Label label3;
     private final Label label4;
+//    private String comName;
     private final List<String> list = new ArrayList<>();
 
 
@@ -28,8 +29,8 @@ public class CellLoadData extends Label{
 //    public static List<XYChart.Series<String,Number>> list = new ArrayList<>();
 
 
-    public CellLoadData( Label label1,Label label2,Label label3,Label label4) throws IOException, InterruptedException {
-        this.esp32 = EspSerialPort.getSerialPort();
+    public CellLoadData( Label label1,Label label2,Label label3,Label label4,String comName) throws IOException, InterruptedException {
+        this.esp32 = EspSerialPort.getSerialPort(comName);
         this.scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
         this.label1 = label1;
         this.label2 =label2;
@@ -102,7 +103,7 @@ public class CellLoadData extends Label{
 //        list.forEach(System.out::println);
     }
 
-    public List<String> gatData(){
+    public List<String> getData(){
         return this.list;
     }
 }

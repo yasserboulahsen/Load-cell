@@ -26,13 +26,13 @@ public class EspData {
         }
     }
 
-    public static int comPort() throws IOException, InterruptedException {
+    public static int comPort(String comName) throws IOException, InterruptedException {
         int comLengh = 0;
         String portTest = "";
         for(int i = 0;i<SerialPort.getCommPorts().length;i++){
             SerialPort esp = SerialPort.getCommPorts()[i];
 
-            if(esp.getDescriptivePortName().contains("Arduino")){
+            if(esp.getDescriptivePortName().contains(comName)){
 
                 portTest = portName(esp.getDescriptivePortName());
 
